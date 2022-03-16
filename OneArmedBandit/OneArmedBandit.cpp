@@ -1,5 +1,7 @@
 #include <iostream>
 #include <random>
+#include <string>
+#include <unordered_map>
 
 
 constexpr int COST_TO_PLAY = 5;
@@ -32,6 +34,8 @@ public:
 // Represent the one armed bandit
 class SlotMachine {
 private:
+    // todo: Jackpot winning logic
+    std::int64_t jackpot = 1'000;
 
     // Random generation
     std::mt19937_64 generator;
@@ -45,6 +49,7 @@ public:
     }
 
     GameResult play(Player& player) {
+        
         GameResult result{};
 
         if (player.money < COST_TO_PLAY) {
@@ -52,7 +57,10 @@ public:
             result.error = true;
             return result;
         }
+
         player.money -= COST_TO_PLAY;
+        jackpot += COST_TO_PLAY;
+        std::cout << "Jackpot: " << jackpot << " Rolling...\n";
         
         for (Colour& slot : result.slots) {
             // Fill a slot with a random colour
@@ -74,21 +82,34 @@ public:
 };
 
 
+
+
+
 int main() {
     SlotMachine game;
     Player player(1'000);
 
+    const std::unordered_map<int, std::string> slot_mappings{
+        {0, "Black"},
+        {1, "White"},
+        {2, "Green"},
+        {3, "Yellow"}
+    };
+
     while (player.money) {
         auto [slots, victory, error] = game.play(player);
-
-
-        std::cout << (victory ? "Won!" : "Lost!") << '\n';
-
         // Player didn't have enough money
-        if (error) {
+        if (error)
             return error;
+
+        // Output slot results
+        for (Colour slot : slots) {
+            std::cout << "Slot : " << slot_mappings.at(static_cast<int>(slot)) << '\n';
         }
+
+
+        std::cout << (victory ? "Won!" : "Lost!") << "\n\n";
     }
 
-
+    return 0;
 }
