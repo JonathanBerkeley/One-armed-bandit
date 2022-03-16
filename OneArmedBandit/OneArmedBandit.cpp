@@ -3,7 +3,6 @@
 #include <string>
 #include <unordered_map>
 
-
 constexpr int COST_TO_PLAY = 5;
 
 // Possible slot results
@@ -13,6 +12,7 @@ enum class Colour : int {
     green,
     yellow
 };
+
 
 // Holds the result of one game
 struct GameResult {
@@ -26,15 +26,15 @@ struct GameResult {
 class Player {
 private:
 public:
-    int money{};
+    std::int64_t money{};
     Player() = default;
     explicit Player(const int money) : money(money) {}
 };
 
+
 // Represent the one armed bandit
 class SlotMachine {
 private:
-    // todo: Jackpot winning logic
     std::int64_t jackpot = 1'000;
 
     // Random generation
@@ -74,15 +74,16 @@ public:
             }
 
         }
-        
+
+        // The player won!
+        player.money += jackpot;
+        jackpot = 0;
+
         result.victory = true;
         return result;
     }
     
 };
-
-
-
 
 
 int main() {
@@ -104,10 +105,11 @@ int main() {
 
         // Output slot results
         for (Colour slot : slots) {
-            std::cout << "Slot : " << slot_mappings.at(static_cast<int>(slot)) << '\n';
+            auto colour_code = static_cast<int>(slot);
+            std::cout << "Slot : " << slot_mappings.at(colour_code) << '\n';
         }
 
-
+        std::cout << player.money << '\n';
         std::cout << (victory ? "Won!" : "Lost!") << "\n\n";
     }
 
