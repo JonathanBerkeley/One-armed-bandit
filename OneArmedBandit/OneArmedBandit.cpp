@@ -1,6 +1,8 @@
 #include <iostream>
 #include <random>
-#include <vector>
+
+
+constexpr int COST_TO_PLAY = 5;
 
 // Possible slot results
 enum class Colour : int {
@@ -12,8 +14,9 @@ enum class Colour : int {
 
 // Holds the result of one game
 struct GameResult {
-    std::vector<Colour> slots;
+    Colour slots[4];
     bool victory = true;
+    bool error = false;
 };
 
 
@@ -41,12 +44,15 @@ public:
         dist = std::uniform_int_distribution<>(0, 3);
     }
 
-    GameResult play(const Player& player) {
-
-        // todo: Check money of player before allowing play
-        // todo: Deduct player money
-
+    GameResult play(Player& player) {
         GameResult result{};
+
+        if (player.money < COST_TO_PLAY) {
+            std::cout << "Not enough money to play!" << '\n';
+            result.error = true;
+            return result;
+        }
+        player.money -= COST_TO_PLAY;
         
         for (Colour& slot : result.slots) {
             // Fill a slot with a random colour
@@ -61,7 +67,7 @@ public:
 
         }
         
-        result.victory = false;
+        result.victory = true;
         return result;
     }
     
@@ -70,9 +76,19 @@ public:
 
 int main() {
     SlotMachine game;
-    const Player player(100);
+    Player player(1'000);
+
+    while (player.money) {
+        auto [slots, victory, error] = game.play(player);
 
 
-    while (player.money)
-        std::cout << game.play(player).victory << '\n';
+        std::cout << (victory ? "Won!" : "Lost!") << '\n';
+
+        // Player didn't have enough money
+        if (error) {
+            return error;
+        }
+    }
+
+
 }
