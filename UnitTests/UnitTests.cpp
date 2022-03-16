@@ -168,7 +168,6 @@ namespace UnitTests
     TEST_CLASS(Data)
     {
     public:
-
         // Test if colour code mappings are as expected
         TEST_METHOD(Mappings)
         {

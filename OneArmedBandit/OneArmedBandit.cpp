@@ -9,7 +9,7 @@
 
 // This example runs until player is out of money
 int main() {
-    SlotMachine game;           // Create slot machine
+    SlotMachine game;      // Create slot machine
     Player player(1'000);  // Create player with $1,000 to spend
 
     // While the player has money left
