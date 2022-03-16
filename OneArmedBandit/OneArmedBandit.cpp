@@ -1,8 +1,9 @@
 #include <iostream>
 #include <random>
+#include <vector>
 
 // Possible slot results
-enum class Colours : int {
+enum class Colour : int {
     black = 0,
     white,
     green,
@@ -11,8 +12,8 @@ enum class Colours : int {
 
 // Holds the result of one game
 struct GameResult {
-    Colours colours[4]{};
-    bool victory = false;
+    std::vector<Colour> slots;
+    bool victory = true;
 };
 
 
@@ -28,17 +29,39 @@ public:
 // Represent the one armed bandit
 class SlotMachine {
 private:
-    // todo: Implement random generation of numbers
+
+    // Random generation
+    std::mt19937_64 generator;
+    std::random_device rd;
+    std::uniform_int_distribution<> dist;
 public:
     SlotMachine() {
-        
+        // Initialise & seed random generator
+        generator = std::mt19937_64{rd()};
+        dist = std::uniform_int_distribution<>(0, 3);
     }
 
     GameResult play(const Player& player) {
+
+        // todo: Check money of player before allowing play
+        // todo: Deduct player money
+
         GameResult result{};
+        
+        for (Colour& slot : result.slots) {
+            // Fill a slot with a random colour
+            slot = static_cast<Colour>(dist(generator));
 
-        // todo: Game logic
+            const Colour first_slot = result.slots[0];
 
+            if (slot != first_slot) {
+                result.victory = false;
+                return result;
+            }
+
+        }
+        
+        result.victory = false;
         return result;
     }
     
