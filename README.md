@@ -5,4 +5,10 @@ Gambling slot machine game, coding challenge for Phorest
 
 # Building
 Requires C++20    
-Open Visual Studio solution file (One-armed-bandit/OneArmedBandit/OneArmedBandit.sln)    
+Project set up for Visual Studio    
+
+- Open Visual Studio solution file (One-armed-bandit/OneArmedBandit/OneArmedBandit.sln)    
+- Build project OneArmedBandit    
+
+# Testing
+UnitTests project in the same solution contains the unit tests    
