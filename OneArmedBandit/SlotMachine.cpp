@@ -1,7 +1,6 @@
 // Disable random security warning:
 // ReSharper disable CppClangTidyCertMsc51Cpp
 #include <iostream>
-#include <random>
 
 #include "SlotMachine.h"
 #include "GameData.h"

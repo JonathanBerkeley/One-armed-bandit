@@ -1,6 +1,8 @@
 # Turn this .gitignore into a whitelist instead of a blacklist
 *
 !*/
+!UnitTests/*
+
 
 # Source code
 !*.cpp

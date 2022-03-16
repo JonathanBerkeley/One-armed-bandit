@@ -1,13 +1,11 @@
 // C++ standard library
 #include <iostream>
-#include <random>
 
 // Project headers
 #include "Player.h"
 #include "GameData.h"
 #include "SlotMachine.h"
 
-//todo: unit testing
 
 // This example runs until player is out of money
 int main() {
