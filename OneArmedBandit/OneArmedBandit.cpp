@@ -9,8 +9,8 @@
 
 // This example runs until player is out of money
 int main() {
-    SlotMachine game;
-    Player player(1'000);
+    SlotMachine game;           // Create slot machine
+    Player player(1'000);  // Create player with $1,000 to spend
 
     // While the player has money left
     while (player.money) {

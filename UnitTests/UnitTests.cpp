@@ -168,6 +168,8 @@ namespace UnitTests
     TEST_CLASS(Data)
     {
     public:
+
+        // Test if colour code mappings are as expected
         TEST_METHOD(Mappings)
         {
             Assert::AreEqual(slot_mappings.at(static_cast<Colour>(0)).c_str(), "Black");
