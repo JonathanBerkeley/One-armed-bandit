@@ -23,5 +23,16 @@ private:
 public:
     SlotMachine();
     explicit SlotMachine(const std::int64_t& jackpot);
+
+    /**
+     * \brief Play a game of the SlotMachine
+     *
+     * Side-effect: Will deduct supplied player's money and add it to the jackpot
+     *
+     * Side-effect: May empty the jackpot if the player wins
+     * \param player Player that is to play the game
+     * \return Result of a single game
+     *  
+     */
     GameResult Play(Player& player);
 };
