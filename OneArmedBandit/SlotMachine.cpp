@@ -16,7 +16,7 @@ void SlotMachine::SeedRandom() {
 }
 
 
-// Create a SlotMachine with a default jackpot of 1'000
+// Create a SlotMachine with a default jackpot of 1000
 SlotMachine::SlotMachine() : jackpot(1'000) {
     SeedRandom();
 }
@@ -42,7 +42,7 @@ GameResult SlotMachine::Play(Player& player) {
     // Decrease player money, increase jackpot
     player.money -= COST_TO_PLAY;
     jackpot += COST_TO_PLAY;
-    std::cout << "Jackpot: " << jackpot << " Rolling...\n";
+    std::cout << "Jackpot: $" << jackpot << " Rolling...\n";
 
     // Fill each slot with a random colour
     for (Colour& slot : result.slots) {

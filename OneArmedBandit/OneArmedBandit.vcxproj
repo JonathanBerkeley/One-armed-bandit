@@ -144,6 +144,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="OneArmedBandit.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="SlotMachine.cpp" />
   </ItemGroup>
   <ItemGroup>

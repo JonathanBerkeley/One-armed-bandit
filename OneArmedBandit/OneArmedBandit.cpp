@@ -1,10 +1,13 @@
+// C++ standard library
 #include <iostream>
 #include <random>
 
+// Project headers
 #include "Player.h"
 #include "GameData.h"
 #include "SlotMachine.h"
 
+//todo: unit testing
 
 // This example runs until player is out of money
 int main() {
@@ -13,17 +16,20 @@ int main() {
 
     // While the player has money left
     while (player.money) {
-        auto [slots, victory, error] = game.Play(player);
-        // Player didn't have enough money
-        if (error)
-            return error;
+
+        // Extract results from a game of the slot machine
+        auto [slots, victory, out_of_money] = game.Play(player);
+
+        // Player tried to play without having enough money
+        if (out_of_money)
+            return 0;
+        std::cout << "Player has: $" << player.money << " left\n";
 
         // Output slot results
-        for (Colour slot : slots) {
-            auto colour_code = static_cast<int>(slot);
-            std::cout << "Slot : " << slot_mappings.at(colour_code) << '\n';
-        }
-        
+        for (Colour slot : slots)
+            std::cout << "Slot : " << slot_mappings.at(slot) << '\n';
+
+        // Output whether or not the player won
         std::cout << (victory ? "Won!" : "Lost!") << "\n\n";
     }
 

@@ -3,6 +3,8 @@
 #include <string>
 #include <unordered_map>
 
+
+// The cost to play the slot machine game
 constexpr int COST_TO_PLAY = 5;
 
 /**
@@ -15,6 +17,15 @@ enum class Colour : int {
     yellow
 };
 
+/**
+ * \brief Maps colour codes to string representations
+ */
+const static std::unordered_map<Colour, std::string> slot_mappings{
+    {Colour::black, "Black"},
+    {Colour::white, "White"},
+    {Colour::green, "Green"},
+    {Colour::yellow, "Yellow"}
+};
 
 /**
  * \brief Holds the result of one game
@@ -23,12 +34,4 @@ struct GameResult {
     Colour slots[4]{};
     bool victory = true;
     bool error = false;
-};
-
-
-const static std::unordered_map<int, std::string> slot_mappings{
-    {0, "Black"},
-    {1, "White"},
-    {2, "Green"},
-    {3, "Yellow"}
 };

@@ -5,7 +5,7 @@
 
 
 /**
- * \brief Represents a One Armed Bandit slot machine with 4 slots and a random chance
+ * \brief Represents a One Armed Bandit style slot machine with 4 slots and a random chance
  *        at a jackpot
  */
 class SlotMachine {
@@ -21,6 +21,6 @@ private:
     void SeedRandom();
 public:
     SlotMachine();
-    SlotMachine(const std::int64_t& jackpot);
+    explicit SlotMachine(const std::int64_t& jackpot);
     GameResult Play(Player& player);
 };
