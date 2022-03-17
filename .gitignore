@@ -2,7 +2,7 @@
 *
 !*/
 !UnitTests/*
-
+!Insomnia/*
 
 # Source code
 !*.cpp
@@ -36,5 +36,6 @@
 !*.vcxproj.user
 
 # Other
+!*.json
 !*.lib
 !*.docx

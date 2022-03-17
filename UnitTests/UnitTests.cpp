@@ -11,7 +11,6 @@ namespace UnitTests
     TEST_CLASS(SlotMachineMoney)
     {
     public:
-
         // Small amount of money
         TEST_METHOD(Play1)
         {

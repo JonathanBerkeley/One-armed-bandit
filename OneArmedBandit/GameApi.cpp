@@ -12,6 +12,11 @@ namespace http = httplib;
 namespace json = nlohmann;
 
 
+/**
+ * \brief Starts a server that will expose the SlotMachine game as an API
+ *
+ * This function will only return execution on exception, as the server is blocking
+ */
 void GameApi() {
     // Set up server and SlotMachine
     std::cout << "[ ----- API launched ----- ]" << '\n';
@@ -28,7 +33,7 @@ void GameApi() {
             // Set player money to the money in the header
             player.money = std::stoi(req.get_header_value("Money"));
 
-        json::json body{};
+        // Extract results from a game of the slot machine
         auto [slots, victory, out_of_money] = game.Play(player);
 
         // Player had no money
@@ -38,6 +43,9 @@ void GameApi() {
             res.set_content(error_body.dump(), "application/json");
             return;
         }
+
+        // Prepare a body to store JSON results into
+        json::json body{};
 
         // Convert results of slot machine into JSON representation
         for (Colour slot : slots) {

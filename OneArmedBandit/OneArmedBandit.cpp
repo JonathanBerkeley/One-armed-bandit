@@ -12,7 +12,7 @@
 // This example runs until player is out of money
 int main() {
 
-    // Switch the USE_API bool to false to use console I/O instead of networked API
+    // Set the USE_API bool to false to use console I/O instead of networked API
     if constexpr (USE_API) {
         GameApi();
         return 0;
