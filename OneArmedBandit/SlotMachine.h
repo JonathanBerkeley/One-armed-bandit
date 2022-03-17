@@ -11,9 +11,6 @@
  */
 class SlotMachine {
 private:
-    // Jackpot of this machine
-    std::int64_t jackpot{};
-
     // Random generation
     std::mt19937_64 generator;
     std::random_device rd;
@@ -21,6 +18,9 @@ private:
 
     void SeedRandom();
 public:
+    // Jackpot of this machine
+    std::int64_t jackpot{};
+
     SlotMachine();
     explicit SlotMachine(const std::int64_t& jackpot);
 

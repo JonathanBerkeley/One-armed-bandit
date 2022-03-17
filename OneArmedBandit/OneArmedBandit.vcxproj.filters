@@ -33,6 +33,9 @@
     <ClInclude Include="..\Lib\json.hpp">
       <Filter>Libraries</Filter>
     </ClInclude>
+    <ClInclude Include="GameApi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SlotMachine.cpp">
@@ -42,6 +45,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="OneArmedBandit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameApi.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
