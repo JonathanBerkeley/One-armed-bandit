@@ -6,6 +6,8 @@
 
 // The cost to play the slot machine game
 constexpr int COST_TO_PLAY = 5;
+// Determines if networked API should be used for I/O or console
+constexpr bool USE_API = true;
 
 /**
  * \brief Possible slot results
