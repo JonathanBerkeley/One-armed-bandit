@@ -9,7 +9,7 @@
 #include "SlotMachine.h"
 
 
-// This example runs until player is out of money
+// Entry point
 int main() {
 
     // Set the USE_API bool to false to use console I/O instead of networked API
